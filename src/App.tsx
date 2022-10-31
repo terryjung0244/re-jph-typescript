@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import Name from "./components/Name";
+import Button from "./components/reusableComponents/Button";
 
 interface JphResponse {
   completed: boolean;
@@ -34,7 +36,17 @@ const App = () => {
 
   return (
     <div>
+      <Button
+        onClick={onClickFunc}
+        buttonText="Hook Me"
+        width="300px"
+        height="100px"
+        fontSize="60px"
+        borderRadius="20px"
+        cursor="pointer"
+      />
       <button onClick={() => onClickFunc()}>Click Me</button>
+      <Name name={"terry"} age={50} />
       <div>
         {data.map((element: JphModel) => {
           return <div key={element.id}>{element.title}</div>;
