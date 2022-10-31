@@ -37,8 +37,17 @@ const App = () => {
   return (
     <div>
       <Button
-        onClick={onClickFunc}
+        onClickFunc={onClickFunc}
         buttonText="Hook Me"
+        width="300px"
+        height="100px"
+        fontSize="60px"
+        borderRadius="20px"
+        cursor="pointer"
+      />
+      <Button
+        onClickFunc={onClickFunc}
+        buttonText="Silent Me"
         width="300px"
         height="100px"
         fontSize="60px"

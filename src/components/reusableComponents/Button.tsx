@@ -1,29 +1,32 @@
 import React from "react";
-
-interface ButtonPropsType {
-  onClick: () => void; //()안에는 params받는곳
-  buttonText: string;
-  width: string;
-  height: string;
-  fontSize: string;
-  borderRadius: string;
-  cursor: string;
-}
+import { ButtonPropsType } from "./Button.interface";
+import * as Styled from "./Style.Button";
 
 const Button = ({
-  onClick,
+  onClickFunc,
   buttonText,
   width,
   height,
   fontSize,
   borderRadius,
   cursor,
+  color,
 }: ButtonPropsType) => {
   return (
     <div>
-      <button style={{ width, height, fontSize, borderRadius, cursor }}>
+      <Styled.ButtonStyle
+        onClick={onClickFunc}
+        buttonText={buttonText}
+        width={width}
+        height={height}
+        fontSize={fontSize}
+        borderRadius={borderRadius}
+        cursor={cursor}
+        color={color}
+      >
         {buttonText}
-      </button>
+      </Styled.ButtonStyle>
+      <div></div>
     </div>
   );
 };
