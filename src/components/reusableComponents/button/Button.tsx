@@ -5,8 +5,8 @@ import * as Styled from "./Style.Button";
 const Button = ({
   onClickFunc,
   buttonText,
-  width,
-  height,
+  width = "300px",
+  height = "100px",
   fontSize,
   borderRadius,
   cursor,
