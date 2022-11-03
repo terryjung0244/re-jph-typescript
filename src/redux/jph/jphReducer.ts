@@ -19,10 +19,22 @@ const jphReducer: Reducer<JPH_STATE_TYPE, JPH_ACTION_TYPES> = (
   //리턴되는 값이 JPH_STATE_TYPE 이당.
   switch (action.type) {
     case JPH_ACTION_REQUEST:
-      console.log("Hello from JPH_ACTION_REQUEST");
+      console.log("Hello from JPH_ACTION_REQUEST", 123);
       return {
         ...state,
         loading: true,
+      };
+    case JPH_ACTION_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        result: action.payload,
+      };
+    case JPH_ACTION_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
       };
     default:
       return state;

@@ -8,40 +8,15 @@ import useAppSelector from "./components/reusableComponents/hook/useAppSelector"
 import Input from "./components/reusableComponents/input/Input";
 import { getJphRequestAction } from "./redux/jph/jphAction";
 import jphReducer from "./redux/jph/jphReducer";
-
-interface JphResponse {
-  completed: boolean;
-  id: number;
-  title: string;
-  userId: number;
-}
-
-interface JphModel {
-  id: number;
-  title: string;
-  userId: number;
-}
+import { JphModel } from "./service/type/model/jphUserModel";
 
 const App = () => {
-  const { loading } = useAppSelector((state) => state.jphReducer);
+  const { loading, error, result } = useAppSelector(
+    (state) => state.jphReducer
+  );
   const dispatch = useAppDispatch();
   const [data, setData] = useState<JphModel[]>([]); // state에 실질적으로 사용될 데이터는 JphModel이다.
   const onClickFunc = async () => {
-    // //이름 잘못 지었음.
-    // const JphApiBase = await fetch(
-    //   "https://jsonplaceholder.typicode.com/todos"
-    // );
-    // const JphResponse: JphResponse[] = await JphApiBase.json();
-    // const parsedData: JphModel[] = JphResponse.map((jphData: JphResponse) => {
-    //   return {
-    //     //Map을 돌렸을때, 리턴되는값은 배열이다.
-    //     id: jphData.id ?? 0,
-    //     title: jphData.title ?? "",
-    //     userId: jphData.userId ?? 1,
-    //   };
-    // // });
-    // setData(parsedData);
-
     dispatch(getJphRequestAction());
   };
 
@@ -88,10 +63,10 @@ const App = () => {
       <button onClick={() => onClickFunc()}>Click Me</button>
       <Name name={"terry"} age={50} />
       <div>
-        {data.map((element: JphModel) => {
+        {result.map((JphUser: JphModel) => {
           return (
-            <div key={element.id}>
-              {element.title} | {element.userId}
+            <div key={JphUser.id}>
+              {JphUser.name} | {JphUser.email}
             </div>
           );
         })}
